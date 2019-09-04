@@ -1,0 +1,111 @@
+string Solution::addBinary(string A, string B)
+{
+    int i=A.length()-1,j=B.length()-1,k;
+    string s="",carry="0";
+
+    while(i>=0&&j>=0)
+    {
+        if(A[i]=='1'&&B[j]=='1')
+        {
+            if(carry=="1")
+            {
+                s=s+"1";
+                carry="1";
+            }
+            else
+            {
+            s=s+"0";
+            carry="1";
+            }
+        }
+        else if(A[i]=='1'&&B[j]=='0')
+        {
+            if(carry=="1")
+            {
+                s=s+"0";
+                carry="1";
+            }
+            else
+            {
+            s=s+"1";
+            carry="0";
+            }
+        }
+        else if(A[i]=='0'&&B[j]=='1')
+        {
+            if(carry=="1")
+            {
+                s=s+"0";
+                carry="1";
+            }
+            else
+            {
+            s=s+"1";
+            carry="0";
+            }
+        }
+        else if(A[i]=='0'&&B[j]=='0')
+        {
+            if(carry=="1")
+            {
+                s=s+"1";
+                carry="0";
+            }
+            else
+            {
+             s=s+"0";
+             carry="0";
+            }
+        }
+        i--;
+        j--;
+    }
+    while(i>=0)
+    {
+        if(carry=="1")
+        {
+            if(A[i]=='0')
+            {
+            s=s+"1";
+            carry="0";
+            }
+            else
+            {
+                s=s+"0";
+                carry="1";
+            }
+        }
+        else if(carry=="0")
+        {
+            s=s+A[i];
+            carry="0";
+        }
+        i--;
+    }
+     while(j>=0)
+    {
+        if(carry=="1")
+        {
+            if(B[j]=='0')
+            {
+            s=s+"1";
+            carry="0";
+            }
+            else
+            {
+                s=s+"0";
+                carry="1";
+            }
+        }
+        else if(carry=="0")
+        {
+            s=s+B[j];
+            carry="0";
+        }
+        j--;
+    }
+    if(carry=="1")
+    s=s+"1";
+    reverse(s.begin(),s.end());
+    return s;
+}
