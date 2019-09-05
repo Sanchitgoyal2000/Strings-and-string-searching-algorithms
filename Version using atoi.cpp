@@ -1,6 +1,6 @@
 int Solution::compareVersion(string s1, string s2)
 {
-    long long int a[10],b[10],res=0;
+    long long int a[100],b[100],res=0;
  long long int i=0,j=0,k=0,h=0,p=0;
  for(i=0;i<s1.length();i++)
  {
